@@ -3,7 +3,7 @@
 		<view class="banner">
 			<image src="https://img-shop.qmimg.cn/s23107/2020/04/26/3eb7808bf105262604.jpg" class="bg"></image>
 			<view class="intro">
-				<view class="greet">您好，{{ isLogin ? userinfo.nickname : '游客' }}</view>
+				<view class="greet">您好，{{ isLogin ? userInfo.nickName : '游客' }}</view>
 				<view class="note">一杯奶茶，一口软欧包，在奈雪遇见两种美好</view>
 			</view>
 		</view>
