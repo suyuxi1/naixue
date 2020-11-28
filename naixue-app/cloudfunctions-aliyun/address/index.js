@@ -4,7 +4,7 @@ exports.main = async (event, context) => {
 
 	if (event.action == 'getList') {
 		const openId = event.openId
-		const res = await db.collection('address').where({
+		const res = await db.collection('addresses').where({
 			openId
 		}).get()
 		const resData = res.data

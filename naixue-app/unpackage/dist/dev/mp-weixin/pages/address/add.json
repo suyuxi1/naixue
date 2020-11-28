@@ -2,5 +2,7 @@
   "navigationBarBackgroundColor": "#f8f8f8",
   "navigationBarTextStyle": "black",
   "navigationBarTitleText": "添加地址",
-  "usingComponents": {}
+  "usingComponents": {
+    "list-cell": "/components/list-cell/list-cell"
+  }
 }
