@@ -25,16 +25,34 @@
 			"navigationBarTextStyle": "black",
 			"navigationBarTitleText": "个人中心"
 		}
-	}    ,{
-            "path" : "pages/login/login",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "",
-                "enablePullDownRefresh": false
-            }
-            
-        }
-    ],
+	}, {
+		"path": "pages/login/login",
+		"style": {
+			"navigationBarTitleText": "",
+			"enablePullDownRefresh": false
+		}
+	}, {
+		"path": "pages/address/address",
+		"style": {
+			"navigationBarBackgroundColor": "#f8f8f8",
+			"navigationBarTextStyle": "black",
+			"navigationBarTitleText": "我的地址"
+		}
+	}, {
+		"path": "pages/address/add",
+		"style": {
+			"navigationBarBackgroundColor": "#f8f8f8",
+			"navigationBarTextStyle": "black",
+			"navigationBarTitleText": "添加地址"
+		}
+	}, {
+		"path": "pages/address/edit",
+		"style": {
+			"navigationBarBackgroundColor": "#f8f8f8",
+			"navigationBarTextStyle": "black",
+			"navigationBarTitleText": "修改地址"
+		}
+	}],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "uni-app",
