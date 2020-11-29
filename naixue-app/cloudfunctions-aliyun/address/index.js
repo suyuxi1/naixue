@@ -19,17 +19,17 @@ exports.main = async (event, context) => {
 			_id
 		}).remove()
 
-		if (res.requestId) {
+		if (res.deleted === 1) {
 			return {
 				status: 0,
 				msg: '删除成功'
 			}
+		} else {
+			return {
+				status: -1,
+				msg: '删除失败'
+			}
 		}
-		return {
-			status: -1,
-			msg: '删除失败'
-		}
-
 	} else if (event.action == 'addAddress') {
 		const data = event.data
 		const street = event.data.street

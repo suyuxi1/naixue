@@ -44,7 +44,7 @@
 <script>
 import listCell from '@/components/list-cell/list-cell.vue';
 export default {
-	components: {
+	comments: {
 		listCell
 	},
 	data() {
@@ -64,7 +64,7 @@ export default {
 			let data = this.form;
 			return uniCloud
 				.callFunction({
-					name: 'vadidateToken',
+					name: 'validateToken',
 					data: {
 						token: uni.getStorageSync('token')
 					}
