@@ -14,7 +14,7 @@
 					<view class="store-content">
 						<view class="store-distance">距离您{{ store.distance }}km</view>
 						<text class="store-text">{{ store.street }}</text>
-						<text class="store-text">营业时间：10：00-22:30</text>
+						<text class="store-text">营业时间：10:00-22:30</text>
 					</view>
 				</view>
 				<view class="store-right">
@@ -28,7 +28,6 @@
 		</view>
 	</view>
 </template>
-
 <script>
 import { mapMutations } from 'vuex';
 export default {
@@ -47,7 +46,6 @@ export default {
 		...mapMutations(['SET_ORDERTYPE', 'SET_STORE']),
 		getStoreData() {
 			return new Promise((resolve, reject) => {
-				//获取用户定位
 				uni.getLocation({
 					type: 'gcj02',
 					success(resLocation) {
@@ -58,6 +56,8 @@ export default {
 				});
 			})
 				.then(local => {
+					console.log('local:');
+					console.log(local);
 					let la1 = local.latitude;
 					let lo1 = local.longitude;
 					return uniCloud
@@ -68,25 +68,28 @@ export default {
 							let temp = [];
 							let l = resStore.result.length;
 							if (l >= 1) {
-								for (let i = 0; i < 1; i++) {
+								for (let i = 0; i < l; i++) {
 									let element = resStore.result[i];
-									//调用封装方法‘计算门店和用户的距离
 									let d = this.distance(element.latitude, element.longitude, la1, lo1);
+									console.log('距离是:' + d);
 									element.distance = d;
 									temp.push(element);
 								}
-								//由近至远排序
 								this.storeData = temp.sort(function(a, b) {
 									return a.distance - b.distance;
 								});
+								console.log('storeData:');
+								console.log(this.storeData);
 								return this.storeData;
 							}
 						});
 				})
 				.then(resMap => {
+					console.log('获取到的信息是: ');
+					console.log(resMap);
+					console.log('获取到的信息是: ');
 					this.latitude = resMap[0].latitude;
 					this.longitude = resMap[0].longitude;
-					//在地图上标记点
 					let map = [];
 					let len = resMap.length;
 					if (len >= 1) {
@@ -106,21 +109,18 @@ export default {
 					}
 				});
 		},
-		//计算距离的方法，（入参为两点的经纬度）
 		distance(la1, lo1, la2, lo2) {
 			var La1 = (la1 * Math.PI) / 180.0;
 			var La2 = (la2 * Math.PI) / 180.0;
 			var La3 = La1 - La2;
 			var Lb3 = (lo1 * Math.PI) / 180.0 - (lo2 * Math.PI) / 180.0;
 			var s = 2 * Math.asin(Math.sqrt(Math.pow(Math.sin(La3 / 2), 2) + Math.cos(La1) * Math.cos(La2) * Math.pow(Math.sin(Lb3 / 2), 2)));
-			//地球半径
 			s = s * 6378.137;
 			s = Math.round(s * 10000) / 10000;
-			//保留1位小数
 			s = s.toFixed(1);
+			console.log(s);
 			return s;
 		},
-		//选取门店地址并且跳转到点餐界面
 		tapStore(store) {
 			this.SET_ORDERTYPE('takein');
 			this.SET_STORE(store);

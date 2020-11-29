@@ -54,7 +54,8 @@ exports.main = async (event, context) => {
 			gender: event.data.gender,
 			mobile: event.data.mobile,
 			area: event.data.area,
-			street: event.data.street
+			street: event.data.street,
+			store_name: event.data.store_name
 		}
 		const res = await db.collection('addresses').where({
 			_id

@@ -1,67 +1,74 @@
 {
 	"pages": [{
-			"path": "pages/stores/stores",
-			"style": {
-				"navigationBarBackgroundColor": "#f8f8f8",
-				"navigationBarTextStyle": "black",
-				"navigationBarTitleText": "选择门店"
-			}
-		},
-		{
-			"path": "pages/index/index",
-			"style": {
-				"navigationStyle": "custom"
-			}
-		}, {
-			"path": "pages/menu/menu",
-			"style": {
-				"navigationBarBackgroundColor": "#F8F8F8",
-				"navigationBarTextStyle": "black",
-				"navigationBarTitleText": "奈雪の茶"
-			}
-		}, {
-			"path": "pages/take-foods/take-foods",
-			"style": {
-				"navigationBarBackgroundColor": "#F8F8F8",
-				"navigationBarTextStyle": "black",
-				"navigationBarTitleText": "奈雪の茶"
-			}
-		}, {
-			"path": "pages/mine/mine",
-			"style": {
-				"navigationBarBackgroundColor": "#F8F8F8",
-				"navigationBarTextStyle": "black",
-				"navigationBarTitleText": "个人中心"
-			}
-		}, {
-			"path": "pages/login/login",
-			"style": {
-				"navigationBarTitleText": "",
-				"enablePullDownRefresh": false
-			}
-		}, {
-			"path": "pages/address/address",
-			"style": {
-				"navigationBarBackgroundColor": "#f8f8f8",
-				"navigationBarTextStyle": "black",
-				"navigationBarTitleText": "我的地址"
-			}
-		}, {
-			"path": "pages/address/add",
-			"style": {
-				"navigationBarBackgroundColor": "#f8f8f8",
-				"navigationBarTextStyle": "black",
-				"navigationBarTitleText": "添加地址"
-			}
-		}, {
-			"path": "pages/address/edit",
-			"style": {
-				"navigationBarBackgroundColor": "#f8f8f8",
-				"navigationBarTextStyle": "black",
-				"navigationBarTitleText": "修改地址"
-			}
+		"path": "pages/index/index",
+		"style": {
+			"navigationStyle": "custom"
 		}
-	],
+	}, {
+		"path": "pages/menu/menu",
+		"style": {
+			"navigationBarBackgroundColor": "#F8F8F8",
+			"navigationBarTextStyle": "black",
+			"navigationBarTitleText": "奈雪の茶"
+		}
+	}, {
+		"path": "pages/take-foods/take-foods",
+		"style": {
+			"navigationBarBackgroundColor": "#F8F8F8",
+			"navigationBarTextStyle": "black",
+			"navigationBarTitleText": "奈雪の茶"
+		}
+	}, {
+		"path": "pages/mine/mine",
+		"style": {
+			"navigationBarBackgroundColor": "#F8F8F8",
+			"navigationBarTextStyle": "black",
+			"navigationBarTitleText": "个人中心"
+		}
+	}, {
+		"path": "pages/login/login",
+		"style": {
+			"navigationBarTitleText": "",
+			"enablePullDownRefresh": false
+		}
+	}, {
+		"path": "pages/address/address",
+		"style": {
+			"navigationBarBackgroundColor": "#f8f8f8",
+			"navigationBarTextStyle": "black",
+			"navigationBarTitleText": "我的地址"
+		}
+	}, {
+		"path": "pages/address/add",
+		"style": {
+			"navigationBarBackgroundColor": "#f8f8f8",
+			"navigationBarTextStyle": "black",
+			"navigationBarTitleText": "添加地址"
+		}
+	}, {
+		"path": "pages/address/edit",
+		"style": {
+			"navigationBarBackgroundColor": "#f8f8f8",
+			"navigationBarTextStyle": "black",
+			"navigationBarTitleText": "修改地址"
+		}
+	}, {
+		"path": "pages/stores/stores",
+		"style": {
+			"navigationBarBackgroundColor": "#f8f8f8",
+			"navigationBarTextStyle": "black",
+			"navigationBarTitleText": "选择门店"
+		}
+	}    ,{
+            "path" : "pages/pay/pay",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+    ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "uni-app",
