@@ -5,7 +5,7 @@
 			<view class="page-section"><map id="myMap" style="width: 100%; height: 400rpx;" :latitude="latitude" :longitude="longitude" :markers="markers"></map></view>
 		</view>
 		<view class="content">
-			<view class="store" v-for="(store, index) in storeData" :key="index" @tap="tapStore">
+			<view class="store" v-for="(store, index) in storeData" :key="index" @tap="tapStore(store)">
 				<view class="store-left">
 					<view class="store-title">
 						<view class="store-name">{{ store.name }}</view>
@@ -14,7 +14,7 @@
 					<view class="store-content">
 						<view class="store-distance">距离您{{ store.distance }}km</view>
 						<text class="store-text">{{ store.street }}</text>
-						<text class="store-text">营业时间：10:00-22:30</text>
+						<text class="store-text">营业时间：10：00-22:30</text>
 					</view>
 				</view>
 				<view class="store-right">
@@ -28,6 +28,7 @@
 		</view>
 	</view>
 </template>
+
 <script>
 import { mapMutations } from 'vuex';
 export default {
@@ -56,8 +57,6 @@ export default {
 				});
 			})
 				.then(local => {
-					console.log('local:');
-					console.log(local);
 					let la1 = local.latitude;
 					let lo1 = local.longitude;
 					return uniCloud
@@ -68,7 +67,7 @@ export default {
 							let temp = [];
 							let l = resStore.result.length;
 							if (l >= 1) {
-								for (let i = 0; i < l; i++) {
+								for (let i = 0; i < 1; i++) {
 									let element = resStore.result[i];
 									let d = this.distance(element.latitude, element.longitude, la1, lo1);
 									console.log('距离是:' + d);
@@ -78,8 +77,6 @@ export default {
 								this.storeData = temp.sort(function(a, b) {
 									return a.distance - b.distance;
 								});
-								console.log('storeData:');
-								console.log(this.storeData);
 								return this.storeData;
 							}
 						});
@@ -114,7 +111,7 @@ export default {
 			var La2 = (la2 * Math.PI) / 180.0;
 			var La3 = La1 - La2;
 			var Lb3 = (lo1 * Math.PI) / 180.0 - (lo2 * Math.PI) / 180.0;
-			var s = 2 * Math.asin(Math.sqrt(Math.pow(Math.sin(La3 / 2), 2) + Math.cos(La1) * Math.cos(La2) * Math.pow(Math.sin(Lb3 / 2), 2)));
+			var s = 2 * Math.asin(Math.sqrt(Math.pow(Math.sin(La3 / 2), 1) + Math.cos(La1) * Math.cos(La2) * Math.pow(Math.sin(Lb3 / 2), 2)));
 			s = s * 6378.137;
 			s = Math.round(s * 10000) / 10000;
 			s = s.toFixed(1);

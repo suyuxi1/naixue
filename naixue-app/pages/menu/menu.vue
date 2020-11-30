@@ -253,7 +253,6 @@ export default {
 	computed: {
 		...mapState(['choseStore', 'orderType', 'choseAddress', 'isLogin']),
 		goodCartNum() {
-			//计算商品选中数量
 			return id =>
 				this.cart.reduce((acc, cur) => {
 					if (cur.id === id) {
@@ -263,7 +262,6 @@ export default {
 				}, 0);
 		},
 		menuCartNum() {
-			//计算类别汇总数量
 			return id =>
 				this.cart.reduce((acc, cur) => {
 					if (cur.cate_id === id) {
@@ -273,19 +271,15 @@ export default {
 				}, 0);
 		},
 		getCartGoodsNumber() {
-			//计算购物车总数量
 			return this.cart.reduce((acc, cur) => acc + cur.number, 0);
 		},
 		getCartGoodsPrice() {
-			//计算购物车总价格
 			return this.cart.reduce((acc, cur) => acc + cur.number * cur.price, 0);
 		},
 		disabledPay() {
-			//判断是否达到起送价格
 			return this.orderType == 'takeout' && this.getCartGoodsPrice < 38 ? true : false;
 		},
 		spread() {
-			//起送差额
 			if (this.orderType != 'takeout') return;
 			return parseFloat((38 - this.getCartGoodsPrice).toFixed(2));
 		}
@@ -295,7 +289,6 @@ export default {
 	},
 	methods: {
 		...mapMutations(['SET_ORDERTYPE']),
-		//切换自取
 		tapTakein() {
 			if (Object.keys(this.choseStore).length != 0) {
 				this.SET_ORDERTYPE('takein');
@@ -305,7 +298,6 @@ export default {
 				});
 			}
 		},
-		//切换外卖
 		tapTakeOut() {
 			if (!this.isLogin) {
 				uni.navigateTo({
@@ -317,13 +309,11 @@ export default {
 				url: '../address/address'
 			});
 		},
-		//选取门店
 		tapStore() {
 			uni.navigateTo({
 				url: '../stores/stores'
 			});
 		},
-		//点餐自动加载数据
 		init() {
 			if (Object.keys(this.choseStore).length == 0) {
 				uni.navigateTo({
@@ -338,10 +328,8 @@ export default {
 					this.goods = res.result.data;
 				});
 		},
-		//计算右侧goods的top和bottom的高度
 		calcSize() {
 			let h = 10;
-			//计算右侧banner
 			let view = uni.createSelectorQuery().select('#ads');
 			view.fields(
 				{
@@ -352,7 +340,6 @@ export default {
 				}
 			).exec();
 			this.goods.forEach(item => {
-				//计算右侧栏每个goods的高
 				let view = uni.createSelectorQuery().select(`#cate-${item._id}`);
 				view.fields(
 					{
@@ -367,7 +354,6 @@ export default {
 			});
 			this.sizeCalcState = true;
 		},
-		//右侧分类点击事件
 		handleMenuTap(id) {
 			if (!this.sizeCalcState) {
 				this.calcSize();
@@ -375,7 +361,6 @@ export default {
 			this.currentCateId = id;
 			this.$nextTick(() => (this.cateScrollTop = this.goods.find(item => item._id == id).top));
 		},
-		//右侧滑动事件
 		handleGoodsScroll({ detail }) {
 			if (!this.sizeCalcState) {
 				this.calcSize();
@@ -386,7 +371,6 @@ export default {
 				this.currentCateId = tabs[0]._id;
 			}
 		},
-		//添加购物车
 		handleAddToCart(cate, good, num) {
 			const index = this.cart.findIndex(item => item.id === good._id);
 			if (index > -1) {
@@ -403,7 +387,6 @@ export default {
 				});
 			}
 		},
-		//移除购物车
 		handleReduceFromCart(item, good) {
 			const index = this.cart.findIndex(item => item.id === good._id);
 			this.cart[index].number -= 1;
@@ -411,25 +394,21 @@ export default {
 				this.cart.splice(index, 1);
 			}
 		},
-		//展示模型框
 		showGoodDetailModal(item, good) {
 			this.good = JSON.parse(JSON.stringify({ ...good, number: 1 }));
 			this.category = JSON.parse(JSON.stringify(item));
 			this.goodDetailModalVisible = true;
 		},
-		//关闭模态框
 		closeGoodDetailModal() {
 			this.goodDetailModalVisible = false;
 			this.good = {};
 			this.category = {};
 		},
-		//改变默认属性值
 		changePropertyDefault(index, key) {
 			this.good.property[index].values.forEach(value => this.$set(value, 'is_default', 0));
 			this.good.property[index].values[key].is_default = 1;
 			this.good.number = 1;
 		},
-		// 计算当前饮品所选属性
 		getGoodSelectedProps(good, type = 'text') {
 			if (good.property) {
 				let props = [];
@@ -444,16 +423,13 @@ export default {
 			}
 			return '';
 		},
-		//模态框添1
 		handlePropertyAdd() {
 			this.good.number += 1;
 		},
-		// 模态框减1
 		handlePropertyReduce() {
 			if (this.good.number === 1) return;
 			this.good.number -= 1;
 		},
-		//添加进购物车
 		handleAddToCartInModal() {
 			const product = Object.assign({}, this.good, {
 				props_text: this.getGoodSelectedProps(this.good),
@@ -462,11 +438,9 @@ export default {
 			this.handleAddToCart(this.category, product, this.good.number);
 			this.closeGoodDetailModal();
 		},
-		//打开关闭购物车详情
 		openCartPopup() {
 			this.cartPopupVisible = !this.cartPopupVisible;
 		},
-		//清空购物车
 		handleCartClear() {
 			uni.showModal({
 				title: '提示',
@@ -479,7 +453,6 @@ export default {
 				}
 			});
 		},
-		//购物车详情减1
 		handleCartItemReduce(index) {
 			if (this.cart[index].number === 1) {
 				this.cart.splice(index, 1);
@@ -490,11 +463,9 @@ export default {
 				this.cartPopupVisible = false;
 			}
 		},
-		//购物车详情加1
 		handleCartItemAdd(index) {
 			this.cart[index].number += 1;
 		},
-		//结算按钮操作
 		topay() {
 			if (!this.isLogin) {
 				uni.navigateTo({

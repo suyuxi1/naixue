@@ -161,6 +161,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 var _vuex = __webpack_require__(/*! vuex */ 12);function ownKeys(object, enumerableOnly) {var keys = Object.keys(object);if (Object.getOwnPropertySymbols) {var symbols = Object.getOwnPropertySymbols(object);if (enumerableOnly) symbols = symbols.filter(function (sym) {return Object.getOwnPropertyDescriptor(object, sym).enumerable;});keys.push.apply(keys, symbols);}return keys;}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};if (i % 2) {ownKeys(Object(source), true).forEach(function (key) {_defineProperty(target, key, source[key]);});} else if (Object.getOwnPropertyDescriptors) {Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));} else {ownKeys(Object(source)).forEach(function (key) {Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));});}}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}var _default =
 {
   data: function data() {
@@ -188,8 +189,6 @@ var _vuex = __webpack_require__(/*! vuex */ 12);function ownKeys(object, enumera
 
       }).
       then(function (local) {
-        console.log('local:');
-        console.log(local);
         var la1 = local.latitude;
         var lo1 = local.longitude;
         return uniCloud.
@@ -200,7 +199,7 @@ var _vuex = __webpack_require__(/*! vuex */ 12);function ownKeys(object, enumera
           var temp = [];
           var l = resStore.result.length;
           if (l >= 1) {
-            for (var i = 0; i < l; i++) {
+            for (var i = 0; i < 1; i++) {
               var element = resStore.result[i];
               var d = _this.distance(element.latitude, element.longitude, la1, lo1);
               console.log('距离是:' + d);
@@ -210,8 +209,6 @@ var _vuex = __webpack_require__(/*! vuex */ 12);function ownKeys(object, enumera
             _this.storeData = temp.sort(function (a, b) {
               return a.distance - b.distance;
             });
-            console.log('storeData:');
-            console.log(_this.storeData);
             return _this.storeData;
           }
         });
@@ -246,7 +243,7 @@ var _vuex = __webpack_require__(/*! vuex */ 12);function ownKeys(object, enumera
       var La2 = la2 * Math.PI / 180.0;
       var La3 = La1 - La2;
       var Lb3 = lo1 * Math.PI / 180.0 - lo2 * Math.PI / 180.0;
-      var s = 2 * Math.asin(Math.sqrt(Math.pow(Math.sin(La3 / 2), 2) + Math.cos(La1) * Math.cos(La2) * Math.pow(Math.sin(Lb3 / 2), 2)));
+      var s = 2 * Math.asin(Math.sqrt(Math.pow(Math.sin(La3 / 2), 1) + Math.cos(La1) * Math.cos(La2) * Math.pow(Math.sin(Lb3 / 2), 2)));
       s = s * 6378.137;
       s = Math.round(s * 10000) / 10000;
       s = s.toFixed(1);
