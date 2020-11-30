@@ -253,7 +253,7 @@ export default {
 		pay() {
 			uni.removeStorageSync('cart');
 			uni.reLaunch({
-				url: '/pages/take-foods/take-foods?order_id=' + '1606741750c996f688'
+				url: '/pages/take-foods/take-foods?order_id=' + '1606754260ddb25b1e'
 			});
 		}
 	}

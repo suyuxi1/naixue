@@ -67,7 +67,7 @@ export default {
 							let temp = [];
 							let l = resStore.result.length;
 							if (l >= 1) {
-								for (let i = 0; i < 1; i++) {
+								for (let i = 0; i < l; i++) {
 									let element = resStore.result[i];
 									let d = this.distance(element.latitude, element.longitude, la1, lo1);
 									console.log('距离是:' + d);
@@ -111,7 +111,7 @@ export default {
 			var La2 = (la2 * Math.PI) / 180.0;
 			var La3 = La1 - La2;
 			var Lb3 = (lo1 * Math.PI) / 180.0 - (lo2 * Math.PI) / 180.0;
-			var s = 2 * Math.asin(Math.sqrt(Math.pow(Math.sin(La3 / 2), 1) + Math.cos(La1) * Math.cos(La2) * Math.pow(Math.sin(Lb3 / 2), 2)));
+			var s = 2 * Math.asin(Math.sqrt(Math.pow(Math.sin(La3 / 2), 2) + Math.cos(La1) * Math.cos(La2) * Math.pow(Math.sin(Lb3 / 2), 2)));
 			s = s * 6378.137;
 			s = Math.round(s * 10000) / 10000;
 			s = s.toFixed(1);
