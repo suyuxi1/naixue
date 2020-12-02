@@ -257,6 +257,19 @@ var _vuex = __webpack_require__(/*! vuex */ 12);function ownKeys(object, enumera
           url: '../address/address?is_choose=true' });
 
       }
+    },
+    toQrcode: function toQrcode() {
+      //未登录跳转到登录页
+      if (!this.isLogin) {
+        uni.navigateTo({
+          url: '/pages/login/login' });
+
+      } else {
+        //已登录，跳转到地址选择页面
+        uni.navigateTo({
+          url: '../member-code/member-code' });
+
+      }
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 

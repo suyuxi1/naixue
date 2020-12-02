@@ -10,7 +10,9 @@
     "pages/address/edit",
     "pages/stores/stores",
     "pages/pay/pay",
-    "pages/remark/remark"
+    "pages/remark/remark",
+    "pages/member-code/member-code",
+    "pages/message/message"
   ],
   "subPackages": [],
   "window": {

@@ -59,25 +59,37 @@
 			"navigationBarTextStyle": "black",
 			"navigationBarTitleText": "选择门店"
 		}
-	}    ,{
-            "path" : "pages/pay/pay",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "",
-                "enablePullDownRefresh": false
-            }
-            
-        }
-        ,{
-            "path" : "pages/remark/remark",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "",
-                "enablePullDownRefresh": false
-            }
-            
-        }
-    ],
+	}, {
+		"path": "pages/pay/pay",
+		"style": {
+			"navigationBarTitleText": "",
+			"enablePullDownRefresh": false
+		}
+
+	}, {
+		"path": "pages/remark/remark",
+		"style": {
+			"navigationBarTitleText": "",
+			"enablePullDownRefresh": false
+		}
+
+	}, {
+		"path": "pages/member-code/member-code",
+		"style": {
+			"navigationBarTitleText": "",
+			"enablePullDownRefresh": false
+		}
+
+	}, {
+		"path": "pages/message/message",
+		"style": {
+			"navigationBarBackgroundColor": "#6fa2ff",
+			"navigationBarTextStyle": "white",
+			"navigationBarTitleText": "",
+			"enablePullDownRefresh": false
+		}
+
+	}],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "uni-app",

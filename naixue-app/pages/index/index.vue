@@ -31,7 +31,7 @@
 						<view class="iconfont iconarrow-right"></view>
 					</view>
 				</view>
-				<view class="qrcode_section">
+				<view class="qrcode_section" @tap="toQrcode">
 					<image src="../../static/images/index/qrcode.png" mode=""></image>
 					<text>会员码</text>
 				</view>
@@ -116,6 +116,19 @@ export default {
 				//已登录，跳转到地址选择页面
 				uni.navigateTo({
 					url: '../address/address?is_choose=true'
+				});
+			}
+		},
+		toQrcode() {
+			//未登录跳转到登录页
+			if (!this.isLogin) {
+				uni.navigateTo({
+					url: '/pages/login/login'
+				});
+			} else {
+				//已登录，跳转到地址选择页面
+				uni.navigateTo({
+					url: '../member-code/member-code'
 				});
 			}
 		}

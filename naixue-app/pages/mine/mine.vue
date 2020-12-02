@@ -2,7 +2,7 @@
 	<view class="container">
 		<view class="position-relative">
 			<image src="https://img-shop.qmimg.cn/s16/images/2020/01/20/9a82219bedcae5c2.jpeg" class="bg"></image>
-			<button type="default" size="mini" class="hym-btn">
+			<button type="default" size="mini" class="hym-btn" @tap="toQrcode">
 				<image src="/static/images/mine/hym.png"></image>
 				<text>会员码</text>
 			</button>
@@ -108,7 +108,7 @@
 					<view class="image"><image src="/static/images/mine/nxsc.png"></image></view>
 					<view>奈雪商城</view>
 				</view>
-				<view class="grid">
+				<view class="grid" @click="toMessage">
 					<view class="image"><image src="/static/images/mine/lxkf.png"></image></view>
 					<view>联系客服</view>
 				</view>
@@ -162,6 +162,24 @@ export default {
 		addresses() {
 			uni.navigateTo({
 				url: '../address/address'
+			});
+		},
+		toQrcode() {
+			//未登录跳转到登录页
+			if (!this.isLogin) {
+				uni.navigateTo({
+					url: '/pages/login/login'
+				});
+			} else {
+				//已登录，跳转到地址选择页面
+				uni.navigateTo({
+					url: '../member-code/member-code'
+				});
+			}
+		},
+		toMessage() {
+			uni.navigateTo({
+				url: '../message/message'
 			});
 		}
 	}
